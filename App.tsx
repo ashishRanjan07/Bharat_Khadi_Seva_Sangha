@@ -1,14 +1,22 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { ImagePath } from './src/utils/ImagePath'
-import Splash from './src/screen/authScreen/Splash'
+import {Image, StatusBar, StyleSheet, Text} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import Splash from './src/screen/authScreen/Splash';
+import NetInfo from '@react-native-community/netinfo';
+import NoInternet from './src/utils/NoInternet';
 
 const App = () => {
-  return (
-   <Splash/>
-  )
-}
+  const [isConnected, setIsConnected] = useState(true);
 
-export default App
+  useEffect(() => {
+    const unsubscribe = NetInfo.addEventListener(state => {
+      setIsConnected(state.isConnected);
+    });
+    return () => unsubscribe();
+  }, []);
 
-const styles = StyleSheet.create({})
+  return <>{isConnected ? <Splash /> : <NoInternet />}</>;
+};
+
+export default App;
+
+const styles = StyleSheet.create({});
