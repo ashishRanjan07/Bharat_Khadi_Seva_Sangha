@@ -1,8 +1,10 @@
-import {Image, StatusBar, StyleSheet, Text} from 'react-native';
+import {Image, StatusBar, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Splash from './src/screen/authScreen/Splash';
 import NetInfo from '@react-native-community/netinfo';
 import NoInternet from './src/utils/NoInternet';
+import Registration from './src/screen/authScreen/Registration';
+import Toast from 'react-native-toast-message';
 
 const App = () => {
   const [isConnected, setIsConnected] = useState(true);
@@ -14,7 +16,17 @@ const App = () => {
     return () => unsubscribe();
   }, []);
 
-  return <>{isConnected ? <Splash /> : <NoInternet />}</>;
+  return (
+    <View style={{flex: 1}}>
+     
+      {isConnected ? (
+        <View style={{flex:1}}>
+           <Toast />
+          <Registration />
+          </View>
+        ) : <NoInternet />}
+    </View>
+  );
 };
 
 export default App;

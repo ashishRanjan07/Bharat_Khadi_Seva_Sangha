@@ -4,5 +4,6 @@ export const AppColor ={
     black:'black',
     success:'green',
     warning:'red',
+    borderColor: '#93AFAC',
     
 }
