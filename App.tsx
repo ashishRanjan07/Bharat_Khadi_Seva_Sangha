@@ -5,6 +5,7 @@ import NetInfo from '@react-native-community/netinfo';
 import NoInternet from './src/utils/NoInternet';
 import Registration from './src/screen/authScreen/Registration';
 import Toast from 'react-native-toast-message';
+import Login from './src/screen/authScreen/Login';
 
 const App = () => {
   const [isConnected, setIsConnected] = useState(true);
@@ -18,13 +19,14 @@ const App = () => {
 
   return (
     <View style={{flex: 1}}>
-     
       {isConnected ? (
-        <View style={{flex:1}}>
-           <Toast />
-          <Registration />
-          </View>
-        ) : <NoInternet />}
+        <View style={{flex: 1}}>
+          <Toast />
+          <Login />
+        </View>
+      ) : (
+        <NoInternet />
+      )}
     </View>
   );
 };
