@@ -6,6 +6,7 @@ import NoInternet from './src/utils/NoInternet';
 import Registration from './src/screen/authScreen/Registration';
 import Toast from 'react-native-toast-message';
 import Login from './src/screen/authScreen/Login';
+import ForgetPassword from './src/screen/authScreen/ForgetPassword';
 
 const App = () => {
   const [isConnected, setIsConnected] = useState(true);
@@ -22,7 +23,7 @@ const App = () => {
       {isConnected ? (
         <View style={{flex: 1}}>
           <Toast />
-          <Login />
+          <ForgetPassword />
         </View>
       ) : (
         <NoInternet />
