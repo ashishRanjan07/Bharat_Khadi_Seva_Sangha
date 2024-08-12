@@ -5,3 +5,5 @@
 5. Created a custom TextInput Box
 6. Added Vector Icons
 7. Added Toast Message for warning and suggestion
+8. Added npm i react-native-image-picker
+9. Added npm i react-native-modal

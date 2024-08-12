@@ -3,6 +3,7 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import DrawerNavigation from '../../drawerNavigation/DrawerNavigation';
 import Notification from '../../../screen/appScreen/Notification';
+import EditProfile from '../../../screen/appScreen/EditProfile';
 
 const Stack = createNativeStackNavigator();
 const AppStack = () => {
@@ -16,6 +17,11 @@ const AppStack = () => {
       <Stack.Screen
       name='Notification'
       component={Notification}
+      options={{headerShown:false}}
+      />
+      <Stack.Screen
+      name='Edit Profile'
+      component={EditProfile}
       options={{headerShown:false}}
       />
     </Stack.Navigator>

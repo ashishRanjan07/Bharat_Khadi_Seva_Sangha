@@ -3,9 +3,9 @@ import React from 'react';
 import {responsive} from '../utils/Responsive';
 import {AppColor} from '../utils/AppColor';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-const CustomList = ({text, iconName, Icon}) => {
+const CustomList = ({text, iconName, Icon,handleAction}) => {
   return (
-    <TouchableOpacity style={styles.listHolder}>
+    <TouchableOpacity style={styles.listHolder} onPress={handleAction}>
       <View style={{flexDirection: 'row', alignItems: 'center', gap: 20}}>
         <Icon
           name={iconName}
