@@ -31,16 +31,6 @@ const App = () => {
         <NoInternet />
       )}
     </View>
-    // <View style={{flex: 1}}>
-    //   {isConnected ? (
-    //     <View style={{flex: 1}}>
-    //       <Toast />
-    //       <ForgetPassword />
-    //     </View>
-    //   ) : (
-    //     <NoInternet />
-    //   )}
-    // </View>
   );
 };
 
