@@ -55,7 +55,7 @@ const DrawerNavigation = () => {
         name="All products"
         component={AllProducts}
         options={{
-          headerShown: true,
+          headerShown: false,
           drawerIcon: ({color}) => (
             <MaterialIcons
               name="check-box"
@@ -71,7 +71,7 @@ const DrawerNavigation = () => {
         name="My order"
         component={MyOrder}
         options={{
-          headerShown: true,
+          headerShown: false,
           drawerIcon: ({color}) => (
             <Feather
               name="box"
@@ -87,7 +87,7 @@ const DrawerNavigation = () => {
         name="Cart"
         component={Cart}
         options={{
-          headerShown: true,
+          headerShown: false,
           drawerIcon: ({color}) => (
             <MaterialIcons
               name="shopping-cart"
@@ -103,7 +103,7 @@ const DrawerNavigation = () => {
         name="About us"
         component={AboutUs}
         options={{
-          headerShown: true,
+          headerShown: false,
           drawerIcon: ({color}) => (
             <MaterialIcons
               name="info"
@@ -119,7 +119,7 @@ const DrawerNavigation = () => {
         name="Contact us"
         component={ContactUs}
         options={{
-          headerShown: true,
+          headerShown: false,
           drawerIcon: ({color}) => (
             <MaterialIcons
               name="contactless"
