@@ -132,6 +132,7 @@ const Login = () => {
           title={'Login'}
           color={AppColor.primary}
           handleAction={handleLogin}
+          textColor={AppColor.white}
         />
         {/* New User Registration */}
         <TouchableOpacity

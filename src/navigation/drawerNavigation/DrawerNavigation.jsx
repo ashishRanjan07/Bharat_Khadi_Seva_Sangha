@@ -23,7 +23,7 @@ const DrawerNavigation = () => {
         name="DashBoard"
         component={BottomNavigation}
         options={{
-          headerShown: true,
+          headerShown: false,
           drawerIcon: ({color}) => (
             <MaterialIcons
               name="dashboard"
@@ -39,7 +39,7 @@ const DrawerNavigation = () => {
         name="Profile"
         component={Profile}
         options={{
-          headerShown: true,
+          headerShown: false,
           drawerIcon: ({color}) => (
             <FontAwesome
               name="user"
