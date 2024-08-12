@@ -15,23 +15,29 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import CustomList from '../../../components/CustomList';
+import { useNavigation } from '@react-navigation/native';
 const Setting = () => {
+const navigation = useNavigation();
+const handelEditProfile = () => {
+  navigation.navigate('Edit Profile')
+}
   return (
     <View style={styles.main}>
       <CustomHeader title={' User Setting'} />
       <ScrollView style={styles.main}>
-        <View style={styles.imageHolder}>
+        {/* <View style={styles.imageHolder}>
           <Image
             source={ImagePath.logo}
             resizeMode="contain"
             style={styles.imageStyle}
           />
-        </View>
+        </View> */}
         <View style={styles.listHolder}>
           <CustomList
             text={'Edit Profile'}
             iconName={'account-edit'}
             Icon={MaterialCommunityIcons}
+            handleAction={handelEditProfile}
           />
           <CustomList
             text={'Saved Payment & Gift Card'}
