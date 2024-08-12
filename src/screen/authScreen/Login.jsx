@@ -68,6 +68,7 @@ const Login = () => {
       );
     }
     console.log('Login BUtton Clicked', userId, password);
+    navigation.navigate('AppStack')
   };
 
   const handleNewUserRegistration = () => {

@@ -5,6 +5,7 @@ import Registration from '../../../screen/authScreen/Registration';
 import Splash from '../../../screen/authScreen/Splash';
 import Login from '../../../screen/authScreen/Login';
 import ForgetPassword from '../../../screen/authScreen/ForgetPassword';
+import AppStack from '../appNavigation/AppStack';
 
 const Stack = createNativeStackNavigator();
 const AuthNavigation = () => {
@@ -28,6 +29,11 @@ const AuthNavigation = () => {
       <Stack.Screen
         name="ForgetPassword"
         component={ForgetPassword}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="AppStack"
+        component={AppStack}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
