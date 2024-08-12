@@ -16,8 +16,10 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import CustomButton from '../../components/CustomButton';
 import {showToast} from '../../utils/ToastHelper';
 import Toast from 'react-native-toast-message';
+import {useNavigation} from '@react-navigation/native';
 
 const Registration = () => {
+  const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
@@ -93,6 +95,10 @@ const Registration = () => {
     // console.log('clicked on the registration Button');
     showToast('success', 'Registration Success', 'registration Successfully.');
   };
+
+  const handleAlreadyHaveAnAccount = () => {
+    navigation.navigate('Login');
+  };
   return (
     <View style={styles.main}>
       <StatusBar barStyle={'dark-content'} backgroundColor={AppColor.white} />
@@ -159,6 +165,14 @@ const Registration = () => {
           textColor={AppColor.white}
           handleAction={handleRegistration}
         />
+        {/* Already Have an Account */}
+        <TouchableOpacity
+          style={styles.newUserHolder}
+          onPress={handleAlreadyHaveAnAccount}>
+          <Text style={[styles.label, {color: AppColor.success}]}>
+            Already have an account
+          </Text>
+        </TouchableOpacity>
       </View>
       <Toast />
     </View>
@@ -208,5 +222,10 @@ const styles = StyleSheet.create({
     padding: responsive(5),
     width: '95%',
     alignSelf: 'center',
+  },
+  newUserHolder: {
+    padding: responsive(10),
+    alignItems: 'center',
+    marginBottom: responsive(10),
   },
 });

@@ -7,6 +7,8 @@ import Registration from './src/screen/authScreen/Registration';
 import Toast from 'react-native-toast-message';
 import Login from './src/screen/authScreen/Login';
 import ForgetPassword from './src/screen/authScreen/ForgetPassword';
+import AuthNavigation from './src/navigation/stackNavigation/authNavigation/AuthNavigation';
+import {NavigationContainer} from '@react-navigation/native';
 
 const App = () => {
   const [isConnected, setIsConnected] = useState(true);
@@ -20,15 +22,25 @@ const App = () => {
 
   return (
     <View style={{flex: 1}}>
+      <Toast />
       {isConnected ? (
-        <View style={{flex: 1}}>
-          <Toast />
-          <ForgetPassword />
-        </View>
+        <NavigationContainer>
+          <AuthNavigation />
+        </NavigationContainer>
       ) : (
         <NoInternet />
       )}
     </View>
+    // <View style={{flex: 1}}>
+    //   {isConnected ? (
+    //     <View style={{flex: 1}}>
+    //       <Toast />
+    //       <ForgetPassword />
+    //     </View>
+    //   ) : (
+    //     <NoInternet />
+    //   )}
+    // </View>
   );
 };
 

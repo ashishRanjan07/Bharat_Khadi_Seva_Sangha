@@ -2,8 +2,11 @@ import React, {useEffect, useRef} from 'react';
 import {Animated, StatusBar, StyleSheet, View} from 'react-native';
 import {AppColor} from '../../utils/AppColor';
 import {ImagePath} from '../../utils/ImagePath';
+import {useNavigation} from '@react-navigation/native';
+import CustomButton from '../../components/CustomButton';
 
 const Splash = () => {
+  const navigation = useNavigation();
   const scaleAnim = useRef(new Animated.Value(0)).current;
   const positionAnim = useRef(new Animated.ValueXY({x: 0, y: -100})).current;
 
@@ -21,6 +24,12 @@ const Splash = () => {
     }).start();
   }, []);
 
+  const handleLoginClick = () => {
+    navigation.navigate('Login');
+  };
+  const handleRegistrationClick = () => {
+    navigation.navigate('Registration');
+  };
   return (
     <View style={styles.main}>
       <StatusBar backgroundColor={AppColor.white} barStyle={'dark-content'} />
@@ -36,6 +45,20 @@ const Splash = () => {
           ]}
         />
       </Animated.View>
+      <View style={{width: '90%'}}>
+        <CustomButton
+          title={'Login'}
+          color={AppColor.primary}
+          handleAction={handleLoginClick}
+          textColor={AppColor.white}
+        />
+        <CustomButton
+          title={'Registration'}
+          color={AppColor.primary}
+          handleAction={handleRegistrationClick}
+          textColor={AppColor.white}
+        />
+      </View>
     </View>
   );
 };
@@ -53,7 +76,7 @@ const styles = StyleSheet.create({
     width: '95%',
   },
   imageStyle: {
-    height: 500,
+    height: 250,
     width: '95%',
   },
 });

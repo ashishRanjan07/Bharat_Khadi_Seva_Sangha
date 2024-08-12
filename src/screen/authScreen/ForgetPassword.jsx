@@ -14,11 +14,13 @@ import CustomTextInput from '../../components/CustomTextInput';
 import CustomButton from '../../components/CustomButton';
 import {showToast} from '../../utils/ToastHelper';
 import Toast from 'react-native-toast-message';
+import {useNavigation} from '@react-navigation/native';
 
 const ForgetPassword = () => {
+  const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState(null);
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(1);
   const [otp, setOtp] = useState('');
   const [otpError, setOtpError] = useState(null);
   const [newPassword, setNewPassword] = useState('');
@@ -43,7 +45,6 @@ const ForgetPassword = () => {
     }
   }, [email, otp, newPassword, confirmNewPassword]);
   const handleSubmit = () => {
-    console.log(email, 'Line 13');
     if (email.trim() === '') {
       setEmailError('Please Enter valid Email id');
       return;
@@ -57,6 +58,8 @@ const ForgetPassword = () => {
       );
       return;
     }
+    console.log(email, 'Line 13');
+    setStep(2);
   };
   const handleVerifyOtp = () => {
     if (otp.trim() === '') {
@@ -72,6 +75,7 @@ const ForgetPassword = () => {
       return;
     }
     console.log('Otp verify button Clicked');
+    setStep(3);
   };
   const handleUpdatePassword = () => {
     if (newPassword.trim() === '' && confirmNewPassword.trim() === '') {
@@ -105,6 +109,10 @@ const ForgetPassword = () => {
       return;
     }
     console.log('Clicked on the update Password Section');
+    setStep(1);
+  };
+  const handleBackToLogin = () => {
+    navigation.navigate('Login');
   };
   return (
     <View style={styles.main}>
@@ -195,7 +203,9 @@ const ForgetPassword = () => {
         )}
       </View>
       {/* Back to login */}
-      <TouchableOpacity style={styles.newUserHolder}>
+      <TouchableOpacity
+        style={styles.newUserHolder}
+        onPress={handleBackToLogin}>
         <Text style={styles.label}>Back to Login</Text>
       </TouchableOpacity>
       <Toast />

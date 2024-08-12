@@ -16,8 +16,11 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import CustomButton from '../../components/CustomButton';
 import {showToast} from '../../utils/ToastHelper';
 import Toast from 'react-native-toast-message';
+import {useNavigation} from '@react-navigation/native';
 
 const Login = () => {
+  const navigation = useNavigation();
+
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -65,6 +68,13 @@ const Login = () => {
       );
     }
     console.log('Login BUtton Clicked', userId, password);
+  };
+
+  const handleNewUserRegistration = () => {
+    navigation.navigate('Registration');
+  };
+  const handleForgetPassword = () => {
+    navigation.navigate('ForgetPassword');
   };
   return (
     <View style={styles.main}>
@@ -123,13 +133,17 @@ const Login = () => {
           handleAction={handleLogin}
         />
         {/* New User Registration */}
-        <TouchableOpacity style={styles.newUserHolder}>
+        <TouchableOpacity
+          style={styles.newUserHolder}
+          onPress={handleNewUserRegistration}>
           <Text style={[styles.label, {color: AppColor.success}]}>
             New User Registration
           </Text>
         </TouchableOpacity>
         {/* Forget Password */}
-        <TouchableOpacity style={styles.newUserHolder}>
+        <TouchableOpacity
+          style={styles.newUserHolder}
+          onPress={handleForgetPassword}>
           <Text style={[styles.label, {color: AppColor.warning}]}>
             Forget Password
           </Text>
