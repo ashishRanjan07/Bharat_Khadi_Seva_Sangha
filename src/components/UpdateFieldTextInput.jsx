@@ -21,7 +21,7 @@ const UpdateFieldTextInput = ({
         <TextInput
           placeholder={placeholder}
           value={value}
-          placeholderTextColor={AppColor.black}
+          placeholderTextColor={AppColor.borderColor}
           style={[styles.label, {fontSize: responsive(20)}]}
           onChangeText={onChange}
           keyboardType={keyboardType}

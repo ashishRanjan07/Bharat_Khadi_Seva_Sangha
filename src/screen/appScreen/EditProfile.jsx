@@ -3,11 +3,10 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {AppColor} from '../../utils/AppColor';
 import ListHeader from '../../components/ListHeader';
 import {responsive} from '../../utils/Responsive';
@@ -16,22 +15,43 @@ import UpdateFieldTextInput from '../../components/UpdateFieldTextInput';
 import CustomButton from '../../components/CustomButton';
 import {ImagePath} from '../../utils/ImagePath';
 import Feather from 'react-native-vector-icons/Feather';
-
+import {BarIndicator} from 'react-native-indicators';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import ImageModal from '../../components/ImageModal';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const EditProfile = () => {
   const navigation = useNavigation();
-  const [name, setName] = useState('Ashish Ranjan');
-  const [mobile, setMobile] = useState('6206416452');
-  const [email, setEmail] = useState('aviashishranjan@gmail.com');
+  const [name, setName] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [email, setEmail] = useState('');
   const [country, setCountry] = useState('India');
-  const [postCode, setPostCode] = useState('800007');
-  const [city, setCity] = useState('Patna');
-  const [state, setSate] = useState('Bihar');
-  const [userName, setUserName] = useState('ashishranjanmonal');
+  const [postCode, setPostCode] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setSate] = useState('');
+  const [userName, setUserName] = useState('');
   const [profileImage, setProfileImage] = useState('');
   const [shoeModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    const fetchUserProfileData = async () => {
+      setLoading(true);
+      try {
+        const responseString = await AsyncStorage.getItem('userInformation');
+        if (responseString) {
+          const responseObject = JSON.parse(responseString);
+          setData(responseObject);
+          setLoading(false);
+        }
+      } catch (error) {
+        console.error('Error parsing user information:', error);
+        setLoading(false);
+      }
+    };
+    fetchUserProfileData();
+  }, []);
 
   const hideModal = () => {
     console.log(shoeModal, 'Line 37');
@@ -96,7 +116,7 @@ const EditProfile = () => {
         <View style={styles.imageHolder}>
           {profileImage ? (
             <Image
-              source={{uri:profileImage}}
+              source={{uri: profileImage}}
               resizeMode="cover"
               style={styles.imageStyle}
             />
@@ -116,14 +136,18 @@ const EditProfile = () => {
             />
           </TouchableOpacity>
         </View>
+        {/* Name */}
         <UpdateFieldTextInput
           title={'Name'}
           value={name}
           onChange={text => setName(text)}
-          placeholder={'Name'}
+          placeholder={`${data?.profile_data[0]?.first_name}${' '}${
+            data?.profile_data[0]?.last_name
+          }`}
           keyboardType={'default'}
         />
-        <UpdateFieldTextInput
+        {/* Mobile Number */}
+        {/* <UpdateFieldTextInput
           title={'Mobile'}
           value={mobile}
           onChange={text => setMobile(text)}
@@ -131,12 +155,12 @@ const EditProfile = () => {
           keyboardType={'number-pad'}
           maxLength={10}
           editable={false}
-        />
+        /> */}
         <UpdateFieldTextInput
           title={'Email'}
           value={email}
           onChange={text => setEmail(text)}
-          placeholder={'Email'}
+          placeholder={`${data?.profile_data[0]?.email}`}
           keyboardType={'email-address'}
         />
         <UpdateFieldTextInput
@@ -145,33 +169,37 @@ const EditProfile = () => {
           onChange={text => setCountry(text)}
           placeholder={'Country'}
           keyboardType={'default'}
+          editable={false}
         />
+        {/* PinCode */}
         <UpdateFieldTextInput
           title={'Pin Code'}
           value={postCode}
           onChange={text => setPostCode(text)}
-          placeholder={'Post Code'}
+          placeholder={`${data?.profile_data[0]?.postcode}`}
           keyboardType={'number-pad'}
         />
+        {/* City */}
         <UpdateFieldTextInput
           title={'City'}
           value={city}
           onChange={text => setCity(text)}
-          placeholder={'City'}
+          placeholder={`${data?.profile_data[0]?.city}`}
           keyboardType={'default'}
         />
+        {/* State */}
         <UpdateFieldTextInput
           title={'State'}
           value={state}
           onChange={text => setSate(text)}
-          placeholder={'State'}
+          placeholder={`${data?.profile_data[0]?.state}`}
           keyboardType={'default'}
         />
         <UpdateFieldTextInput
           title={'User Id'}
           value={userName}
           onChange={text => setUserName(text)}
-          placeholder={'User Name'}
+          placeholder={`${data?.profile_data[0]?.username}`}
           keyboardType={'default'}
           editable={false}
         />
@@ -194,6 +222,16 @@ const EditProfile = () => {
           openGallery={openGallery}
         />
       </ScrollView>
+      {loading && (
+        <View style={styles.loaderView}>
+          <View style={styles.loaderContainer}>
+            <BarIndicator color={AppColor.primary} />
+            <Text style={styles.loaderText}>
+              Fetching your details please wait...
+            </Text>
+          </View>
+        </View>
+      )}
     </View>
   );
 };
@@ -229,7 +267,7 @@ const styles = StyleSheet.create({
     width: responsive(150),
     height: responsive(150),
     borderRadius: responsive(75),
-    borderWidth:2,
+    borderWidth: 2,
   },
   iconHolder: {
     borderWidth: 2,
@@ -241,5 +279,32 @@ const styles = StyleSheet.create({
     backgroundColor: AppColor.white,
     elevation: responsive(10),
     borderColor: AppColor.white,
+  },
+  loaderText: {
+    fontSize: responsive(18),
+    color: AppColor.primary,
+    textAlign: 'center',
+  },
+  loaderView: {
+    position: 'absolute',
+    borderWidth: 1,
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    padding: responsive(10),
+  },
+  loaderContainer: {
+    gap: responsive(30),
+    borderWidth: 2,
+    width: '90%',
+    alignSelf: 'center',
+    padding: responsive(15),
+    borderRadius: responsive(10),
+    borderColor: AppColor.primary,
+    backgroundColor: AppColor.white,
+    paddingTop: responsive(30),
   },
 });

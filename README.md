@@ -7,3 +7,5 @@
 7. Added Toast Message for warning and suggestion
 8. Added npm i react-native-image-picker
 9. Added npm i react-native-modal
+10. Login using redux
+11. Added logout

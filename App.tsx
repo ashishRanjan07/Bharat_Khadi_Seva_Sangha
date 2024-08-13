@@ -9,6 +9,9 @@ import Login from './src/screen/authScreen/Login';
 import ForgetPassword from './src/screen/authScreen/ForgetPassword';
 import AuthNavigation from './src/navigation/stackNavigation/authNavigation/AuthNavigation';
 import {NavigationContainer} from '@react-navigation/native';
+import {Provider} from 'react-redux';
+import store from './src/redux/store/Store';
+import Routes from './src/navigation/routes/Routes';
 
 const App = () => {
   const [isConnected, setIsConnected] = useState(true);
@@ -21,16 +24,18 @@ const App = () => {
   }, []);
 
   return (
-    <View style={{flex: 1}}>
-      <Toast />
-      {isConnected ? (
-        <NavigationContainer>
-          <AuthNavigation />
-        </NavigationContainer>
-      ) : (
-        <NoInternet />
-      )}
-    </View>
+    <Provider store={store}>
+      <View style={{flex: 1}}>
+        <Toast />
+        {isConnected ? (
+          <NavigationContainer>
+            <Routes />
+          </NavigationContainer>
+        ) : (
+          <NoInternet />
+        )}
+      </View>
+    </Provider>
   );
 };
 

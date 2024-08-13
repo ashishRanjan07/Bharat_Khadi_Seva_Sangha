@@ -4,6 +4,10 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import DrawerNavigation from '../../drawerNavigation/DrawerNavigation';
 import Notification from '../../../screen/appScreen/Notification';
 import EditProfile from '../../../screen/appScreen/EditProfile';
+import BrowseFaqs from '../../../screen/appScreen/BrowseFaqs';
+import TermsAndPolicy from '../../../screen/appScreen/TermsAndPolicy';
+import SaveAddress from '../../../screen/appScreen/SaveAddress';
+import EditAddress from '../../../screen/appScreen/EditAddress';
 
 const Stack = createNativeStackNavigator();
 const AppStack = () => {
@@ -22,6 +26,26 @@ const AppStack = () => {
       <Stack.Screen
       name='Edit Profile'
       component={EditProfile}
+      options={{headerShown:false}}
+      />
+      <Stack.Screen
+      name='FAQs'
+      component={BrowseFaqs}
+      options={{headerShown:false}}
+      />
+      <Stack.Screen
+      name='Terms and Condition'
+      component={TermsAndPolicy}
+      options={{headerShown:false}}
+      />
+      <Stack.Screen
+      name='Address'
+      component={SaveAddress}
+      options={{headerShown:false}}
+      />
+       <Stack.Screen
+      name='Edit Address'
+      component={EditAddress}
       options={{headerShown:false}}
       />
     </Stack.Navigator>

@@ -1,0 +1,72 @@
+[
+    {
+      "Name": "John Doe",
+      "PhoneNo": "1234567890",
+      "Pincode": "10001",
+      "State": "Delhi",
+      "City": "New Delhi",
+      "HouseNo": "A-101",
+      "RoadName": "Main Street",
+      "TypeOfAddress": "Home"
+    },
+    {
+      "Name": "Jane Smith",
+      "PhoneNo": "0987654321",
+      "Pincode": "110001",
+      "State": "Maharashtra",
+      "City": "Mumbai",
+      "HouseNo": "B-102",
+      "RoadName": "Ocean Drive",
+      "TypeOfAddress": "Work"
+    },
+    {
+      "Name": "Alice Brown",
+      "PhoneNo": "2345678901",
+      "Pincode": "200002",
+      "State": "Tamil Nadu",
+      "City": "Chennai",
+      "HouseNo": "C-103",
+      "RoadName": "Bay Avenue",
+      "TypeOfAddress": "Other"
+    },
+    {
+      "Name": "Bob White",
+      "PhoneNo": "3456789012",
+      "Pincode": "400003",
+      "State": "Gujarat",
+      "City": "Ahmedabad",
+      "HouseNo": "D-104",
+      "RoadName": "Cove Lane",
+      "TypeOfAddress": "Home"
+    },
+    {
+      "Name": "Charlie Green",
+      "PhoneNo": "4567890123",
+      "Pincode": "500004",
+      "State": "Karnataka",
+      "City": "Bangalore",
+      "HouseNo": "E-105",
+      "RoadName": "Harbor Path",
+      "TypeOfAddress": "Work"
+    },
+    {
+      "Name": "David Black",
+      "PhoneNo": "5678901234",
+      "Pincode": "600005",
+      "State": "West Bengal",
+      "City": "Kolkata",
+      "HouseNo": "F-106",
+      "RoadName": "Island Way",
+      "TypeOfAddress": "Other"
+    },
+    {
+      "Name": "Emily Red",
+      "PhoneNo": "6789012345",
+      "Pincode": "700006",
+      "State": "Uttar Pradesh",
+      "City": "Lucknow",
+      "HouseNo": "G-107",
+      "RoadName": "Junction Street",
+      "TypeOfAddress": "Home"
+    }
+  ]
