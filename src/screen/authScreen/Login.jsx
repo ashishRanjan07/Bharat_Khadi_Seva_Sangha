@@ -1,4 +1,5 @@
 import {
+  Alert,
   Image,
   StatusBar,
   StyleSheet,
@@ -16,7 +17,9 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import CustomButton from '../../components/CustomButton';
 import {showToast} from '../../utils/ToastHelper';
 import Toast from 'react-native-toast-message';
+import {BarIndicator} from 'react-native-indicators';
 import {useNavigation} from '@react-navigation/native';
+import {validateLogin} from '../../api/auth_api';
 
 const Login = () => {
   const navigation = useNavigation();
@@ -26,6 +29,9 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [userIdError, setUserIdError] = useState(null);
   const [showPasswordError, setShowPasswordError] = useState(null);
+  const [loginError, setLoginError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
   const userIdRegExp = /[A-Z]/;
 
   useEffect(() => {
@@ -34,10 +40,11 @@ const Login = () => {
     }
     if (password.length > 0) {
       setShowPasswordError('');
+
     }
   }, [userId, password]);
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (userId.length === 0 && password.length === 0) {
       setUserIdError('Please Enter User Id');
       setShowPasswordError('Please Enter Password');
@@ -68,7 +75,28 @@ const Login = () => {
       );
     }
     console.log('Login BUtton Clicked', userId, password);
-    navigation.navigate('AppStack')
+    const loginData = {
+      username: userId,
+      userpass: password,
+    };
+    try{
+      setLoading(true);
+    const response = await validateLogin(loginData);
+    if (response.status_code === 200) {
+      setLoading(false);
+      navigation.navigate('AppStack');
+    } else {
+      setLoading(false);
+      setLoginError('Invalid Credentials', response.message);
+    }
+    }catch(error){
+      showToast(
+        'info',
+        'Try Again',
+        'Something went wrong. Please try again...'
+      )
+    };
+    
   };
 
   const handleNewUserRegistration = () => {
@@ -77,6 +105,7 @@ const Login = () => {
   const handleForgetPassword = () => {
     navigation.navigate('ForgetPassword');
   };
+
   return (
     <View style={styles.main}>
       <StatusBar barStyle={'dark-content'} backgroundColor={AppColor.white} />
@@ -127,7 +156,11 @@ const Login = () => {
             <Text style={{color: AppColor.warning}}>{showPasswordError}</Text>
           </View>
         )}
-
+        {loginError && (
+          <View style={styles.errorHolder}>
+            <Text style={{color: AppColor.warning}}>{loginError}</Text>
+          </View>
+        )}
         <CustomButton
           title={'Login'}
           color={AppColor.primary}
@@ -152,6 +185,16 @@ const Login = () => {
         </TouchableOpacity>
       </View>
       <Toast />
+      {loading && (
+        <View style={styles.loaderView}>
+          <View style={styles.loaderContainer}>
+            <BarIndicator color={AppColor.primary} />
+            <Text style={styles.loaderText}>
+              Validating your Credentials please wait...
+            </Text>
+          </View>
+        </View>
+      )}
     </View>
   );
 };
@@ -207,5 +250,32 @@ const styles = StyleSheet.create({
     padding: responsive(10),
     alignItems: 'center',
     marginBottom: responsive(10),
+  },
+  loaderContainer: {
+    gap: responsive(30),
+    borderWidth: 2,
+    width: '90%',
+    alignSelf: 'center',
+    padding: responsive(15),
+    borderRadius: responsive(10),
+    borderColor: AppColor.primary,
+    backgroundColor: AppColor.white,
+    paddingTop: responsive(30),
+  },
+  loaderText: {
+    fontSize: responsive(18),
+    color: AppColor.primary,
+    textAlign: 'center',
+  },
+  loaderView: {
+    position: 'absolute',
+    borderWidth: 1,
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    padding: responsive(10),
   },
 });
