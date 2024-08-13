@@ -20,10 +20,13 @@ import Toast from 'react-native-toast-message';
 import {BarIndicator} from 'react-native-indicators';
 import {useNavigation} from '@react-navigation/native';
 import {validateLogin} from '../../api/auth_api';
+import {useDispatch, useSelector} from 'react-redux';
+import {login, saveData} from '../../redux/action/Action';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Login = () => {
   const navigation = useNavigation();
-
+  const dispatch = useDispatch();
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -40,7 +43,6 @@ const Login = () => {
     }
     if (password.length > 0) {
       setShowPasswordError('');
-
     }
   }, [userId, password]);
 
@@ -79,24 +81,28 @@ const Login = () => {
       username: userId,
       userpass: password,
     };
-    try{
+    try {
       setLoading(true);
-    const response = await validateLogin(loginData);
-    if (response.status_code === 200) {
-      setLoading(false);
-      navigation.navigate('AppStack');
-    } else {
-      setLoading(false);
-      setLoginError('Invalid Credentials', response.message);
-    }
-    }catch(error){
+      const response = await validateLogin(loginData);
+      if (response.status_code === 200) {
+        await AsyncStorage.setItem('isLoggedIn', 'Yes');
+        const jsonValue = JSON.stringify(response);
+        await AsyncStorage.setItem('userInformation', jsonValue);
+        dispatch(login('Yes'));
+        dispatch(saveData('Yes'));
+        setLoading(false);
+        navigation.navigate('AppStack');
+      } else {
+        setLoading(false);
+        setLoginError('Invalid Credentials', response.message);
+      }
+    } catch (error) {
       showToast(
         'info',
         'Try Again',
-        'Something went wrong. Please try again...'
-      )
-    };
-    
+        'Something went wrong. Please try again...',
+      );
+    }
   };
 
   const handleNewUserRegistration = () => {

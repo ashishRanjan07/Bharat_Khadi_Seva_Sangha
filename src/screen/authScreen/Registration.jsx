@@ -17,6 +17,7 @@ import CustomButton from '../../components/CustomButton';
 import {showToast} from '../../utils/ToastHelper';
 import Toast from 'react-native-toast-message';
 import {useNavigation} from '@react-navigation/native';
+import {BarIndicator} from 'react-native-indicators';
 
 const Registration = () => {
   const navigation = useNavigation();
@@ -27,6 +28,8 @@ const Registration = () => {
   const [emailError, setEmailError] = useState(null);
   const [userIdError, setUserIdError] = useState(null);
   const [passwordError, setPasswordError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [registrationError, setRegistrationError] = useState(null);
 
   const emailRegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const userIdRegExp = /[A-Z]/;
