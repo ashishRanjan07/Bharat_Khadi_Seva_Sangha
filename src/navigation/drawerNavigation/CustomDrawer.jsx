@@ -1,4 +1,11 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  Linking,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React from 'react';
 import {AppColor} from '../../utils/AppColor';
 import {ImagePath} from '../../utils/ImagePath';
@@ -6,6 +13,14 @@ import {responsive} from '../../utils/Responsive';
 import {DrawerItemList} from '@react-navigation/drawer';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 const CustomDrawer = props => {
+  const handleFacebook = async () => {
+    Linking.openURL('https://www.facebook.com/bharatkhadisevaksanghakolkata');
+  };
+
+  const handleInstagram = async () => {
+    Linking.openURL('https://www.instagram.com/bharatkhadisevaksangha/');
+  };
+
   return (
     <View style={styles.drawerContent}>
       <View style={styles.imageHolder}>
@@ -32,16 +47,20 @@ const CustomDrawer = props => {
           size={responsive(40)}
           color={AppColor.C4}
         />
-        <MaterialCommunityIcons
-          name="facebook"
-          size={responsive(40)}
-          color={AppColor.C4}
-        />
-        <MaterialCommunityIcons
-          name="instagram"
-          size={responsive(40)}
-          color={AppColor.C4}
-        />
+        <TouchableOpacity onPress={handleFacebook}>
+          <MaterialCommunityIcons
+            name="facebook"
+            size={responsive(40)}
+            color={AppColor.C4}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleInstagram}>
+          <MaterialCommunityIcons
+            name="instagram"
+            size={responsive(40)}
+            color={AppColor.C4}
+          />
+        </TouchableOpacity>
       </View>
     </View>
   );
