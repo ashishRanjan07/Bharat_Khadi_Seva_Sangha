@@ -8,6 +8,7 @@ import BrowseFaqs from '../../../screen/appScreen/BrowseFaqs';
 import TermsAndPolicy from '../../../screen/appScreen/TermsAndPolicy';
 import SaveAddress from '../../../screen/appScreen/SaveAddress';
 import EditAddress from '../../../screen/appScreen/EditAddress';
+import SavedCard from '../../../screen/appScreen/SavedCard';
 
 const Stack = createNativeStackNavigator();
 const AppStack = () => {
@@ -46,6 +47,11 @@ const AppStack = () => {
        <Stack.Screen
       name='Edit Address'
       component={EditAddress}
+      options={{headerShown:false}}
+      />
+      <Stack.Screen
+      name='Saved Card and Gift Card'
+      component={SavedCard}
       options={{headerShown:false}}
       />
     </Stack.Navigator>

@@ -4,7 +4,6 @@ import {AppColor} from '../../utils/AppColor';
 import ListHeader from '../../components/ListHeader';
 import {responsive} from '../../utils/Responsive';
 import UpdateFieldTextInput from '../../components/UpdateFieldTextInput';
-import CustomTextInput from '../../components/CustomTextInput';
 import CustomButton from '../../components/CustomButton';
 
 const EditAddress = ({route}) => {
