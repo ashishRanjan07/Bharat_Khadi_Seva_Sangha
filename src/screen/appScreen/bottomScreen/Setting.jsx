@@ -91,6 +91,7 @@ const Setting = () => {
             text={'Saved Payment & Gift Card'}
             iconName={'wallet-giftcard'}
             Icon={MaterialIcons}
+            handleAction={() => navigation.navigate('Saved Card and Gift Card')}
           />
           <CustomList
             text={'Save Address'}
