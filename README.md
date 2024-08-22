@@ -9,3 +9,4 @@
 9. Added npm i react-native-modal
 10. Login using redux
 11. Added logout
+12 npm i react-native-swiper

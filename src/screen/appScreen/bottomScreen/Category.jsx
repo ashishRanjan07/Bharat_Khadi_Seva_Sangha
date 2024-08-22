@@ -27,7 +27,7 @@ const Category = () => {
       const response = await productCategory();
       setLoading(false);
       setData(response.data);
-      console.log(response?.data[0]?.img[0]?.img, 'Line 14');
+      // console.log(response?.data[0]?.img[0]?.img, 'Line 14');
     };
     fetchCategory();
   }, []);

@@ -15,7 +15,7 @@ import {responsive} from '../utils/Responsive';
 import Octicons from 'react-native-vector-icons/Octicons';
 
 const CustomCategoryModal = ({visible, onClose, onConfirm, message, data}) => {
-  console.log(data?.mid_array, 'Line 9');
+//   console.log(data?.mid_array, 'Line 9');
 
   const renderItem = ({item}) => {
     console.log(item, 'Line 19');
