@@ -1,28 +1,27 @@
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {StyleSheet, Text, View, TextInput} from 'react-native';
 import React from 'react';
-import {AppColor} from '../../../utils/AppColor';
-import CustomHeader from '../../../components/CustomHeader';
-import {responsive} from '../../../utils/Responsive';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import CustomSearch from '../../../components/CustomSearch';
+import {AppColor} from '../utils/AppColor';
+import {responsive} from '../utils/Responsive';
 
-const Search = () => {
+const CustomSearch = () => {
   return (
-    <View style={styles.main}>
-      <CustomHeader title={'Search'} />
-      {/* Search Box */}
-      <CustomSearch/>
+    <View style={styles.searchBoxHolder}>
+      <View style={styles.searchBox}>
+        <Ionicons name="search" color={AppColor.white} size={responsive(35)} />
+      </View>
+      <TextInput
+        placeholder="Search..."
+        placeholderTextColor={AppColor.black}
+        style={styles.textInputBox}
+      />
     </View>
   );
 };
 
-export default Search;
+export default CustomSearch;
 
 const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-    backgroundColor: AppColor.white,
-  },
   searchBoxHolder: {
     borderWidth: 2,
     marginVertical: responsive(10),
@@ -45,8 +44,8 @@ const styles = StyleSheet.create({
     borderRadius: responsive(10),
     fontSize: responsive(18),
     color: AppColor.black,
-    backgroundColor:AppColor.white,
-    fontFamily:'NotoSans-Medium',
-    paddingHorizontal:responsive(10)
+    backgroundColor: AppColor.white,
+    fontFamily: 'NotoSans-Medium',
+    paddingHorizontal: responsive(10),
   },
 });

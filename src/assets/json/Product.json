@@ -1,0 +1,40 @@
+{
+  "id": 123,
+  "title": "Example Product Title",
+  "description": "This is an example product description detailing the features and benefits of the product.",
+  "category": "example-category",
+  "price": 19.99,
+  "discountPercentage": 10.0,
+  "rating": 4.5,
+  "stock": 100,
+  "tags": ["tag1", "tag2"],
+  "brand": "Example Brand",
+  "sku": "EX123456",
+  "weight": 500,
+  "dimensions": {
+    "width": 10,
+    "height": 20,
+    "depth": 30
+  },
+  "warrantyInformation": "1 year warranty",
+  "shippingInformation": "Ships within 24 hours",
+  "availabilityStatus": "In Stock",
+  "reviews": [
+    {
+      "rating": 5,
+      "comment": "Excellent product!",
+      "date": "2024-08-15T00:00:00Z",
+      "reviewerName": "John Doe",
+      "reviewerEmail": "john.doe@example.com"
+    }
+  ],
+  "returnPolicy": "14 days return policy",
+  "minimumOrderQuantity": 1,
+  "meta": {
+    "createdAt": "2024-08-01T00:00:00Z",
+    "updatedAt": "2024-08-15T00:00:00Z",
+    "barcode": "1234567890123"
+  },
+  "thumbnail": "https://example.com/thumbnail.jpg",
+  "images": ["https://example.com/image1.jpg", "https://example.com/image2.jpg"]
+}
