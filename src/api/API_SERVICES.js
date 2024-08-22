@@ -18,3 +18,20 @@ export const VALIDATE_LOGIN = async data => {
     .catch(error => error?.response?.data);
   return response;
 };
+
+// Product Category
+export const PRODUCT_CATEGORY = async data => {
+  console.log(data, 'Line 7 in API Services');
+  const url = `${serverAddress}/category_list_final`;
+  const response = await axios
+    .post(url, data, {
+      headers: {
+        keys: 'khadi@123',
+      },
+    })
+    .then(res => {
+      return res?.data;
+    })
+    .catch(error => error?.response?.data);
+  return response;
+};
