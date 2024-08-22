@@ -4,7 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {AppColor} from '../utils/AppColor';
 import {responsive} from '../utils/Responsive';
 
-const CustomSearch = () => {
+const CustomSearch = ({value,setValue}) => {
   return (
     <View style={styles.searchBoxHolder}>
       <View style={styles.searchBox}>
@@ -14,6 +14,8 @@ const CustomSearch = () => {
         placeholder="Search..."
         placeholderTextColor={AppColor.black}
         style={styles.textInputBox}
+        value={value}
+        onChangeText={(text)=>setValue(text)}
       />
     </View>
   );

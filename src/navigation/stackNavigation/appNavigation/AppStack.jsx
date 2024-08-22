@@ -9,6 +9,7 @@ import TermsAndPolicy from '../../../screen/appScreen/TermsAndPolicy';
 import SaveAddress from '../../../screen/appScreen/SaveAddress';
 import EditAddress from '../../../screen/appScreen/EditAddress';
 import SavedCard from '../../../screen/appScreen/SavedCard';
+import ProductDetails from '../../../components/product/ProductDetails';
 
 const Stack = createNativeStackNavigator();
 const AppStack = () => {
@@ -52,6 +53,11 @@ const AppStack = () => {
       <Stack.Screen
       name='Saved Card and Gift Card'
       component={SavedCard}
+      options={{headerShown:false}}
+      />
+      <Stack.Screen
+      name='Product Details'
+      component={ProductDetails}
       options={{headerShown:false}}
       />
     </Stack.Navigator>
