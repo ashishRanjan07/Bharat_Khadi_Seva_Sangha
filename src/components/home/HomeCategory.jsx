@@ -23,7 +23,6 @@ const HomeCategory = () => {
       const response = await productCategory();
       setLoading(false);
       setData(response.data);
-      console.log(response?.data, 'Line 14');
     };
     fetchCategory();
   }, []);

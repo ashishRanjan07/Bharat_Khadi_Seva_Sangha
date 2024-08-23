@@ -4,6 +4,8 @@ import {AppColor} from '../../../utils/AppColor';
 import CustomHeader from '../../../components/CustomHeader';
 import MarqueeeeText from '../../../components/MarqueeeeText';
 import HomeCategory from '../../../components/home/HomeCategory';
+import Subscribe from '../../../components/home/Subscribe';
+import Toast from 'react-native-toast-message';
 
 const Home = () => {
   return (
@@ -12,6 +14,8 @@ const Home = () => {
       <CustomHeader title={'Home'} />
       <MarqueeeeText text={"This Application is dealing in all types of fashion Fabrics."}/>
       <HomeCategory/>
+      <Subscribe/>
+      <Toast/>
     </View>
   );
 };
