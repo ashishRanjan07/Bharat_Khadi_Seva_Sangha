@@ -64,3 +64,36 @@ export const SUBSCRIBE_EMAIL = async data => {
     .catch(error => error?.response?.data);
   return response;
 };
+
+// Forget Password Email
+export const FORGETPASSWORD_EMAIL = async data => {
+  const url = `${serverAddress}/PasswordForget`;
+  const response = await axios
+    .post(url, data, {
+      headers: {
+        keys: 'khadi@123',
+      },
+    })
+    .then(res => {
+      return res?.data;
+    })
+    .catch(error => error?.response?.data);
+  return response;
+};
+
+
+//Change Password 3rd Steps https://khadiapi.atomax.in/api/Change_password
+export const CHANGE_PASSWORD = async data => {
+  const url = `${serverAddress}/Change_password`;
+  const response = await axios
+    .post(url, data, {
+      headers: {
+        keys: 'khadi@123',
+      },
+    })
+    .then(res => {
+      return res?.data;
+    })
+    .catch(error => error?.response?.data);
+  return response;
+};

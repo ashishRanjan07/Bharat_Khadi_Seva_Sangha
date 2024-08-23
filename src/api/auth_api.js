@@ -1,4 +1,4 @@
-import {PRODUCT_CATEGORY, PRODUCT_LIST, SUBSCRIBE_EMAIL, VALIDATE_LOGIN} from './API_SERVICES';
+import {CHANGE_PASSWORD, FORGETPASSWORD_EMAIL, PRODUCT_CATEGORY, PRODUCT_LIST, SUBSCRIBE_EMAIL, VALIDATE_LOGIN} from './API_SERVICES';
 
 // Validate Login
 export const validateLogin = async data => {
@@ -52,6 +52,38 @@ export const product_list = async data => {
 export const subscribe_email = async data => {
   try {
     const response = await SUBSCRIBE_EMAIL(data);
+    if (!response) {
+      return `Can't connect to server`;
+    } else if (response?.error === true) {
+      return response;
+    } else {
+      return response;
+    }
+  } catch (error) {
+    return error.message;
+  }
+};
+
+// ForgetPassword Email
+export const forgetPassword_Email = async data => {
+  try {
+    const response = await FORGETPASSWORD_EMAIL(data);
+    if (!response) {
+      return `Can't connect to server`;
+    } else if (response?.error === true) {
+      return response;
+    } else {
+      return response;
+    }
+  } catch (error) {
+    return error.message;
+  }
+};
+
+// Change Password
+export const change_password = async data => {
+  try {
+    const response = await CHANGE_PASSWORD(data);
     if (!response) {
       return `Can't connect to server`;
     } else if (response?.error === true) {

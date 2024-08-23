@@ -15,6 +15,8 @@ import CustomButton from '../../components/CustomButton';
 import {showToast} from '../../utils/ToastHelper';
 import Toast from 'react-native-toast-message';
 import {useNavigation} from '@react-navigation/native';
+import {change_password, forgetPassword_Email} from '../../api/auth_api';
+import {BarIndicator} from 'react-native-indicators';
 
 const ForgetPassword = () => {
   const navigation = useNavigation();
@@ -22,11 +24,14 @@ const ForgetPassword = () => {
   const [emailError, setEmailError] = useState(null);
   const [step, setStep] = useState(1);
   const [otp, setOtp] = useState('');
+  const [otpValue, setOtpValue] = useState('');
+  const [userId, setUserId] = useState('');
   const [otpError, setOtpError] = useState(null);
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
   const [newPasswordError, setNewPasswordError] = useState(null);
   const [confirmNewPasswordError, setConfirmNewPasswordError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const emailRegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -44,7 +49,8 @@ const ForgetPassword = () => {
       setConfirmNewPasswordError('');
     }
   }, [email, otp, newPassword, confirmNewPassword]);
-  const handleSubmit = () => {
+
+  const handleSubmit = async () => {
     if (email.trim() === '') {
       setEmailError('Please Enter valid Email id');
       return;
@@ -58,8 +64,37 @@ const ForgetPassword = () => {
       );
       return;
     }
-    console.log(email, 'Line 13');
-    setStep(2);
+    try {
+      setLoading(true);
+      const data = {
+        user_email: email,
+      };
+      const response = await forgetPassword_Email(data);
+      console.log(response, 'Line 70');
+      if (response?.status_code === 200) {
+        console.log(response?.email_otp, 'Line 71');
+        setOtpValue(response?.email_otp);
+        setUserId(response?.data?.ID);
+        setStep(2);
+        setLoading(false);
+        showToast(
+          'success',
+          'OTP is send',
+          'OTP is sent on the provide email address',
+        );
+      }
+      if (response?.status_code === 404) {
+        setEmailError(response?.message);
+        setEmail('');
+        setLoading(false);
+      }
+    } catch (error) {
+      showToast(
+        'error',
+        'Something Went Wrong',
+        'Please try again after sometimes.',
+      );
+    }
   };
   const handleVerifyOtp = () => {
     if (otp.trim() === '') {
@@ -74,10 +109,18 @@ const ForgetPassword = () => {
       );
       return;
     }
-    console.log('Otp verify button Clicked');
-    setStep(3);
+    setLoading(true);
+    if (otp == otpValue) {
+      setStep(3);
+      console.log(otp, otpValue, 'Line 109');
+      setLoading(false);
+    } else {
+      setOtpError('Please enter valid OTP');
+      setOtp('');
+      setLoading(false);
+    }
   };
-  const handleUpdatePassword = () => {
+  const handleUpdatePassword = async () => {
     if (newPassword.trim() === '' && confirmNewPassword.trim() === '') {
       setNewPasswordError('New Password is required.');
       setConfirmNewPasswordError('Confirm Password is required.');
@@ -108,8 +151,42 @@ const ForgetPassword = () => {
       );
       return;
     }
-    console.log('Clicked on the update Password Section');
-    setStep(1);
+    try {
+      setLoading(true);
+      const data = {
+        id: userId,
+        password: confirmNewPassword,
+      };
+      const response = await change_password(data);
+      console.log(response);
+      if (response?.status_code === 200) {
+        showToast(
+          'success',
+          'Password Changed',
+          'Your password is changed successfully.',
+        );
+        setEmail('');
+        setOtp('');
+        setNewPassword('');
+        setConfirmNewPassword('');
+        setStep(1);
+        setLoading(false);
+        navigation.navigate('Login');
+      } else {
+        showToast(
+          'error',
+          'something went wrong2',
+          'Please again after sometime2.',
+        );
+        setLoading(false);
+      }
+    } catch (error) {
+      showToast(
+        'error',
+        'something went wrong',
+        'Please again after sometime.',
+      );
+    }
   };
   const handleBackToLogin = () => {
     navigation.navigate('Login');
@@ -140,6 +217,7 @@ const ForgetPassword = () => {
               title={'Submit'}
               color={AppColor.primary}
               handleAction={handleSubmit}
+              textColor={AppColor.white}
             />
           </>
         )}
@@ -208,6 +286,16 @@ const ForgetPassword = () => {
         onPress={handleBackToLogin}>
         <Text style={styles.label}>Back to Login</Text>
       </TouchableOpacity>
+      {loading && (
+        <View style={styles.loaderView}>
+          <View style={styles.loaderContainer}>
+            <BarIndicator color={AppColor.primary} />
+            <Text style={styles.loaderText}>
+              Validating your input please wait...
+            </Text>
+          </View>
+        </View>
+      )}
       <Toast />
     </View>
   );
@@ -244,5 +332,32 @@ const styles = StyleSheet.create({
     fontSize: responsive(18),
     color: AppColor.black,
     fontFamily: 'NotoSans-Medium',
+  },
+  loaderContainer: {
+    gap: responsive(30),
+    borderWidth: 2,
+    width: '90%',
+    alignSelf: 'center',
+    padding: responsive(15),
+    borderRadius: responsive(10),
+    borderColor: AppColor.primary,
+    backgroundColor: AppColor.white,
+    paddingTop: responsive(30),
+  },
+  loaderText: {
+    fontSize: responsive(18),
+    color: AppColor.primary,
+    textAlign: 'center',
+  },
+  loaderView: {
+    position: 'absolute',
+    borderWidth: 1,
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    padding: responsive(10),
   },
 });
