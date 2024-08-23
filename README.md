@@ -10,3 +10,4 @@
 10. Login using redux
 11. Added logout
 12 npm i react-native-swiper
+13. npm i react-native-marquee

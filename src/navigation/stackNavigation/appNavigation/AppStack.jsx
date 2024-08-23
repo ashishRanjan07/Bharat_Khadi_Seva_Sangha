@@ -10,6 +10,9 @@ import SaveAddress from '../../../screen/appScreen/SaveAddress';
 import EditAddress from '../../../screen/appScreen/EditAddress';
 import SavedCard from '../../../screen/appScreen/SavedCard';
 import ProductDetails from '../../../components/product/ProductDetails';
+import CategoryDetails from '../../../components/home/CategoryDetails';
+import CategoryProductList from '../../../components/home/CategoryProductList';
+import ProductList from '../../../components/home/ProductList';
 
 const Stack = createNativeStackNavigator();
 const AppStack = () => {
@@ -21,44 +24,59 @@ const AppStack = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-      name='Notification'
-      component={Notification}
-      options={{headerShown:false}}
+        name="Notification"
+        component={Notification}
+        options={{headerShown: false}}
       />
       <Stack.Screen
-      name='Edit Profile'
-      component={EditProfile}
-      options={{headerShown:false}}
+        name="Edit Profile"
+        component={EditProfile}
+        options={{headerShown: false}}
       />
       <Stack.Screen
-      name='FAQs'
-      component={BrowseFaqs}
-      options={{headerShown:false}}
+        name="FAQs"
+        component={BrowseFaqs}
+        options={{headerShown: false}}
       />
       <Stack.Screen
-      name='Terms and Condition'
-      component={TermsAndPolicy}
-      options={{headerShown:false}}
+        name="Terms and Condition"
+        component={TermsAndPolicy}
+        options={{headerShown: false}}
       />
       <Stack.Screen
-      name='Address'
-      component={SaveAddress}
-      options={{headerShown:false}}
-      />
-       <Stack.Screen
-      name='Edit Address'
-      component={EditAddress}
-      options={{headerShown:false}}
+        name="Address"
+        component={SaveAddress}
+        options={{headerShown: false}}
       />
       <Stack.Screen
-      name='Saved Card and Gift Card'
-      component={SavedCard}
-      options={{headerShown:false}}
+        name="Edit Address"
+        component={EditAddress}
+        options={{headerShown: false}}
       />
       <Stack.Screen
-      name='Product Details'
-      component={ProductDetails}
-      options={{headerShown:false}}
+        name="Saved Card and Gift Card"
+        component={SavedCard}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Product Details"
+        component={ProductDetails}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Category Details"
+        component={CategoryDetails}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Category Product List"
+        component={CategoryProductList}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Product List"
+        component={ProductList}
+        options={{headerShown: false}}
       />
     </Stack.Navigator>
   );
