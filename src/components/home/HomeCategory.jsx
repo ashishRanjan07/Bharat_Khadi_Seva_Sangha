@@ -28,7 +28,7 @@ const HomeCategory = () => {
   }, []);
 
   const handleSubCategory = item => {
-    navigation.navigate('Category Details',{ item:item});
+    navigation.navigate('Category Details', {item: item});
   };
 
   const renderItem = ({item}) => {
@@ -52,12 +52,11 @@ const HomeCategory = () => {
   return (
     <View style={styles.main}>
       {loading ? (
-        <View style={styles.loaderContainer}>
-          <BarIndicator
-            size={responsive(25)}
-            color={AppColor.primary}
-            style={styles.loaderStyle}
-          />
+        <View style={styles.loaderView}>
+          <View style={styles.loaderContainer}>
+            <BarIndicator color={AppColor.primary} />
+            <Text style={styles.loaderText}>Please wait...</Text>
+          </View>
         </View>
       ) : (
         <View>
@@ -66,6 +65,7 @@ const HomeCategory = () => {
             data={data}
             renderItem={renderItem}
             keyExtractor={item => item.id}
+            showsHorizontalScrollIndicator={false}
           />
         </View>
       )}
@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: AppColor.white,
+    // height:responsive(250)
   },
   loaderStyle: {
     padding: 20,
@@ -114,5 +115,35 @@ const styles = StyleSheet.create({
     width: responsive(50),
     height: responsive(50),
     borderRadius: responsive(25),
+  },
+  loaderView: {
+    // position: 'absolute',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    justifyContent: 'center',
+    // backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    padding: responsive(10),
+    // height:responsive(200)
+  },
+  loaderContainer: {
+    gap: responsive(30),
+    // borderWidth: 2,
+    width: '100%',
+    alignSelf: 'center',
+    padding: responsive(15),
+    borderRadius: responsive(10),
+    borderColor: AppColor.primary,
+    backgroundColor: AppColor.white,
+    paddingTop: responsive(30),
+  },
+  loaderText: {
+    fontSize: responsive(18),
+    color: AppColor.primary,
+    textAlign: 'center',
+  },
+  loader: {
+    position: 'absolute',
   },
 });
