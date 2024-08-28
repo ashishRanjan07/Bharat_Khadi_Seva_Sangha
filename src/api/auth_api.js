@@ -1,4 +1,4 @@
-import {CHANGE_PASSWORD, FORGETPASSWORD_EMAIL, PRODUCT_CATEGORY, PRODUCT_LIST, SUBSCRIBE_EMAIL, VALIDATE_LOGIN} from './API_SERVICES';
+import {APP_BANNER, BEST_SELLER, CHANGE_PASSWORD, FORGETPASSWORD_EMAIL, PRODUCT_CATEGORY, PRODUCT_LIST, SUBSCRIBE_EMAIL, VALIDATE_LOGIN} from './API_SERVICES';
 
 // Validate Login
 export const validateLogin = async data => {
@@ -95,3 +95,37 @@ export const change_password = async data => {
     return error.message;
   }
 };
+
+// App Banner
+export const app_banner = async data => {
+  try {
+    const response = await APP_BANNER(data);
+    if (!response) {
+      return `Can't connect to server`;
+    } else if (response?.error === true) {
+      return response;
+    } else {
+      return response;
+    }
+  } catch (error) {
+    return error.message;
+  }
+};
+
+// Best Seller
+export const best_seller = async data => {
+  try {
+    const response = await BEST_SELLER(data);
+    if (!response) {
+      return `Can't connect to server`;
+    } else if (response?.error === true) {
+      return response;
+    } else {
+      return response;
+    }
+  } catch (error) {
+    return error.message;
+  }
+};
+
+
