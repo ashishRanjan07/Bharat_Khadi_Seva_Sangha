@@ -1,6 +1,7 @@
 import {
   ActivityIndicator,
   Image,
+  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
@@ -71,6 +72,7 @@ const BestSeller = ({id, bannerFor}) => {
 
   return (
     <View style={styles.main}>
+     <SafeAreaView/>
       <View style={styles.buttonHolder}>
         <TouchableOpacity
           style={[

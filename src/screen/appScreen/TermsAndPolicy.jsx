@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import React, { useState } from 'react';
 import { AppColor } from '../../utils/AppColor';
 import ListHeader from '../../components/ListHeader';
@@ -9,6 +9,7 @@ const TermsAndPolicy = () => {
   const [isLoading, setIsLoading] = useState(true);
   return (
     <View style={styles.main}>
+     <SafeAreaView/>
       <ListHeader title={'Privacy Policy'} />
       {isLoading && (
         <View style={styles.loaderContainer}>

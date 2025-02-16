@@ -1,4 +1,4 @@
-import {ScrollView, StatusBar, StyleSheet, View} from 'react-native';
+import {SafeAreaView, ScrollView, StatusBar, StyleSheet, View} from 'react-native';
 import React from 'react';
 import {AppColor} from '../../utils/AppColor';
 import GiftCard from '../../components/GiftCard';
@@ -10,7 +10,9 @@ import SavedUPIInfo from '../../components/SavedUPIInfo';
 const SavedCard = () => {
   return (
     <>
+     <SafeAreaView/>
       <ListHeader title={'Save Gift and card Info'} />
+
       <ScrollView style={styles.main}>
         <StatusBar barStyle={'dark-content'} backgroundColor={AppColor.white} />
         {/* Gift Card Options */}

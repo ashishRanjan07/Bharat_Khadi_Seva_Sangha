@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import {WebView} from 'react-native-webview';
 import {BarIndicator} from 'react-native-indicators';
@@ -9,6 +9,7 @@ const BrowseFaqs = () => {
     const [isLoading, setIsLoading] = useState(true);
     return (
         <View style={styles.main}>
+         <SafeAreaView/>
             <ListHeader title={"Browser FAQs"}/>
           {isLoading && (
             <View style={styles.loaderContainer}>

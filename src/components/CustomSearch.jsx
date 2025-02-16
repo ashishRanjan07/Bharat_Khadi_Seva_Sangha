@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, TextInput, StatusBar} from 'react-native';
+import {StyleSheet, Text, View, TextInput, StatusBar, SafeAreaView} from 'react-native';
 import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {AppColor} from '../utils/AppColor';
@@ -7,6 +7,7 @@ import {responsive} from '../utils/Responsive';
 const CustomSearch = ({value,setValue}) => {
   return (
     <View style={styles.searchBoxHolder}>
+     <SafeAreaView/>
       <StatusBar barStyle={"dark-content"} backgroundColor={AppColor.white}/>
       <View style={styles.searchBox}>
         <Ionicons name="search" color={AppColor.white} size={responsive(35)} />

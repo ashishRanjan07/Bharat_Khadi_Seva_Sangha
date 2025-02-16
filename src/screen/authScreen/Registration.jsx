@@ -1,5 +1,6 @@
 import {
   Image,
+  SafeAreaView,
   StatusBar,
   StyleSheet,
   Text,
@@ -104,6 +105,7 @@ const Registration = () => {
   };
   return (
     <View style={styles.main}>
+     <SafeAreaView/>
       <StatusBar barStyle={'dark-content'} backgroundColor={AppColor.white} />
       <Image
         source={ImagePath.logo}

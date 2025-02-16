@@ -2,6 +2,7 @@ import {
   ActivityIndicator,
   FlatList,
   Image,
+  SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -56,6 +57,7 @@ const ProductList = ({route}) => {
   };
   return (
     <View style={styles.main}>
+    <SafeAreaView/>
       <ListHeader title={'Product List'} />
       <FlatList
         data={item?.data}

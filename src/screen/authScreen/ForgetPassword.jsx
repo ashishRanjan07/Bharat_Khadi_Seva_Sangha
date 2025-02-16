@@ -1,5 +1,6 @@
 import {
   Image,
+  SafeAreaView,
   StatusBar,
   StyleSheet,
   Text,
@@ -193,6 +194,7 @@ const ForgetPassword = () => {
   };
   return (
     <View style={styles.main}>
+     <SafeAreaView/>
       <StatusBar barStyle={'dark-content'} backgroundColor={AppColor.white} />
       <Image
         source={ImagePath.logo}

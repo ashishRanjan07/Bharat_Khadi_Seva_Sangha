@@ -1,6 +1,7 @@
 import {
   Alert,
   Image,
+  SafeAreaView,
   ScrollView,
   StyleSheet,
   View,
@@ -69,6 +70,7 @@ const Setting = () => {
   };
   return (
     <View style={styles.main}>
+    <SafeAreaView/>
       <CustomHeader title={' User Setting'} />
       <ScrollView style={styles.main}>
         <View style={styles.imageHolder}>

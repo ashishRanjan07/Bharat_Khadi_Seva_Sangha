@@ -1,5 +1,6 @@
 import {
   Image,
+  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
@@ -39,6 +40,7 @@ const Category = () => {
   };
   return (
     <View style={styles.main}>
+    <SafeAreaView/>
       <CustomHeader title={'Category'} />
       {loading ? (
         <View style={styles.loaderContainer}>

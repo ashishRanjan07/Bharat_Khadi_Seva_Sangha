@@ -2,6 +2,7 @@ import {
   ActivityIndicator,
   FlatList,
   Image,
+  SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -52,6 +53,7 @@ const CategoryDetails = ({route}) => {
 
   return (
     <View style={styles.main}>
+    <SafeAreaView/>
       <ListHeader title={`${item?.name}'s Category`} />
       <FlatList
         data={item?.mid_array}

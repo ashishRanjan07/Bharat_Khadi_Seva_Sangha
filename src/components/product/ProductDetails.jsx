@@ -1,5 +1,6 @@
 import {
   Image,
+  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
@@ -46,6 +47,7 @@ const ProductDetails = ({route}) => {
 
   return (
     <View style={styles.main}>
+    <SafeAreaView/>
       <ListHeader title={'Product Details'} />
       {/* Product Descriptions */}
       <ScrollView>
@@ -180,7 +182,6 @@ const styles = StyleSheet.create({
     height: '100%',
     alignItems: 'center',
     alignSelf: 'center',
-    borderWidth: 2,
   },
   imageStyle: {
     width: '100%',

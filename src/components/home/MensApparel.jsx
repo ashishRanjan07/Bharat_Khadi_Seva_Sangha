@@ -1,4 +1,4 @@
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Image, SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {responsive} from '../../utils/Responsive';
 import {AppColor} from '../../utils/AppColor';
@@ -7,6 +7,7 @@ import {ImagePath} from '../../utils/ImagePath';
 const MensApparel = () => {
   return (
     <View style={styles.main}>
+    <SafeAreaView/>
       <View style={styles.contentHolder}>
         <View style={styles.textHolder}>
           <Text style={styles.text}>Men's Apparel</Text>

@@ -1,6 +1,7 @@
 import {
   FlatList,
   Image,
+  SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -51,6 +52,7 @@ const HomeCategory = () => {
 
   return (
     <View style={styles.main}>
+    <SafeAreaView/>
       {loading ? (
         <View style={styles.loaderView}>
           <View style={styles.loaderContainer}>

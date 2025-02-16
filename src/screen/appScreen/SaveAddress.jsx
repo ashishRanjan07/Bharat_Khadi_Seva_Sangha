@@ -1,5 +1,5 @@
 import React from 'react';
-import {StatusBar, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StatusBar, StyleSheet, Text, View} from 'react-native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import SavedAddress from './SavedAddress';
 import AddAddress from './AddAddress';
@@ -28,6 +28,7 @@ const CustomTabBarItem = ({iconName, label}) => (
 const SaveAddress = () => {
   return (
     <>
+     <SafeAreaView/>
       <StatusBar backgroundColor={AppColor.white} barStyle={'dark-content'} />
       <ListHeader title={'Address'} />
       <Tab.Navigator

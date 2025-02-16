@@ -6,6 +6,7 @@ import {
   View,
   Linking,
   StatusBar,
+  SafeAreaView,
 } from 'react-native';
 import React from 'react';
 import {ImagePath} from './ImagePath';
@@ -20,6 +21,7 @@ const NoInternet = () => {
   };
   return (
     <View style={styles.contentHolder}>
+    <SafeAreaView/>
       <StatusBar backgroundColor={AppColor.white} barStyle={'dark-content'} />
       <Image
         source={ImagePath.noInternet}

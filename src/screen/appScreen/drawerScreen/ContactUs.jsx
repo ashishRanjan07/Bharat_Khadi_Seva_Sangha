@@ -1,4 +1,4 @@
-import {StatusBar, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StatusBar, StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import {AppColor} from '../../../utils/AppColor';
 import CustomHeader from '../../../components/CustomHeader';
@@ -9,6 +9,7 @@ const ContactUs = () => {
   const [isLoading, setIsLoading] = useState(true);
   return (
     <View style={styles.main}>
+     <SafeAreaView/>
       <StatusBar backgroundColor={AppColor.white} barStyle={'dark-content'} />
       <CustomHeader title={'Contact Us'} />
       {isLoading && (

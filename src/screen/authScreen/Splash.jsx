@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import {Animated, StatusBar, StyleSheet, View} from 'react-native';
+import {Animated, SafeAreaView, StatusBar, StyleSheet, View} from 'react-native';
 import {AppColor} from '../../utils/AppColor';
 import {ImagePath} from '../../utils/ImagePath';
 import {useNavigation} from '@react-navigation/native';
@@ -32,6 +32,7 @@ const Splash = () => {
   };
   return (
     <View style={styles.main}>
+     <SafeAreaView/>
       <StatusBar backgroundColor={AppColor.white} barStyle={'dark-content'} />
       <Animated.View style={[styles.imageHolder, positionAnim.getLayout()]}>
         <Animated.Image

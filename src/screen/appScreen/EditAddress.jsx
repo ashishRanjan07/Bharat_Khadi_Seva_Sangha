@@ -1,4 +1,4 @@
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {AppColor} from '../../utils/AppColor';
 import ListHeader from '../../components/ListHeader';
@@ -26,6 +26,7 @@ const EditAddress = ({route}) => {
   };
   return (
     <ScrollView style={styles.main}>
+     <SafeAreaView/>
       <ListHeader title={'Edit Address'} />
       <Text style={styles.headerText}>Edit your saved Address</Text>
       <UpdateFieldTextInput

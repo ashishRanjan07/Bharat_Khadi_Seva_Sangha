@@ -1,5 +1,6 @@
 import {
   Image,
+  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
@@ -110,6 +111,7 @@ const EditProfile = () => {
   };
   return (
     <View style={styles.main}>
+     <SafeAreaView/>
       <ListHeader title={'Edit Profile'} />
       <ScrollView style={styles.main}>
         {/* Image Section */}

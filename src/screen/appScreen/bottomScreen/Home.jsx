@@ -1,4 +1,4 @@
-import {ScrollView, StatusBar, StyleSheet, View} from 'react-native';
+import {SafeAreaView, ScrollView, StatusBar, StyleSheet, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {AppColor} from '../../../utils/AppColor';
 import CustomHeader from '../../../components/CustomHeader';
@@ -42,6 +42,7 @@ const Home = () => {
 
   return (
     <View style={styles.main}>
+    <SafeAreaView/>
       <StatusBar barStyle={'dark-content'} backgroundColor={AppColor.white} />
       <CustomHeader title={'Home'} />
       <MarqueeeeText

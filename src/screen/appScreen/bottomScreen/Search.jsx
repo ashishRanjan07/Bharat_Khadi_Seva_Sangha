@@ -1,6 +1,7 @@
 import {
   FlatList,
   ImageBackground,
+  SafeAreaView,
   StatusBar,
   StyleSheet,
   TouchableOpacity,
@@ -51,6 +52,7 @@ const Search = () => {
 
   return (
     <View style={styles.main}>
+    <SafeAreaView/>
       <StatusBar barStyle={'dark-content'} backgroundColor={AppColor.white} />
       <CustomHeader title={'Search'} />
       {/* Search Box */}

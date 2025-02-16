@@ -1,6 +1,7 @@
 import {
   Image,
   Linking,
+  SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -23,6 +24,7 @@ const CustomDrawer = props => {
 
   return (
     <View style={styles.drawerContent}>
+     <SafeAreaView/>
       <View style={styles.imageHolder}>
         <Image
           source={ImagePath.user}

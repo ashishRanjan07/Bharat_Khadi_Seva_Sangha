@@ -79,6 +79,7 @@ const AddAddress = () => {
 
   return (
     <ScrollView style={styles.main}>
+    
       <CustomTextInput
         label={'Name'}
         value={name}
