@@ -35,7 +35,7 @@ const DrawerNavigation = () => {
           drawerAllowFontScaling: false,
         }}
       />
-      <Drawer.Screen
+      {/* <Drawer.Screen
         name="Profile"
         component={Profile}
         options={{
@@ -50,8 +50,8 @@ const DrawerNavigation = () => {
           drawerLabelStyle: styles.labelStyle,
           drawerAllowFontScaling: false,
         }}
-      />
-      <Drawer.Screen
+      /> */}
+      {/* <Drawer.Screen
         name="All products"
         component={AllProducts}
         options={{
@@ -66,8 +66,8 @@ const DrawerNavigation = () => {
           drawerLabelStyle: styles.labelStyle,
           drawerAllowFontScaling: false,
         }}
-      />
-      <Drawer.Screen
+      /> */}
+      {/* <Drawer.Screen
         name="My order"
         component={MyOrder}
         options={{
@@ -82,8 +82,8 @@ const DrawerNavigation = () => {
           drawerLabelStyle: styles.labelStyle,
           drawerAllowFontScaling: false,
         }}
-      />
-      <Drawer.Screen
+      /> */}
+      {/* <Drawer.Screen
         name="Cart"
         component={Cart}
         options={{
@@ -98,8 +98,8 @@ const DrawerNavigation = () => {
           drawerLabelStyle: styles.labelStyle,
           drawerAllowFontScaling: false,
         }}
-      />
-      <Drawer.Screen
+      /> */}
+      {/* <Drawer.Screen
         name="About us"
         component={AboutUs}
         options={{
@@ -114,8 +114,8 @@ const DrawerNavigation = () => {
           drawerLabelStyle: styles.labelStyle,
           drawerAllowFontScaling: false,
         }}
-      />
-      <Drawer.Screen
+      /> */}
+      {/* <Drawer.Screen
         name="Contact us"
         component={ContactUs}
         options={{
@@ -130,7 +130,7 @@ const DrawerNavigation = () => {
           drawerLabelStyle: styles.labelStyle,
           drawerAllowFontScaling: false,
         }}
-      />
+      /> */}
     </Drawer.Navigator>
   );
 };

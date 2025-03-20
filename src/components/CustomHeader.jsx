@@ -18,10 +18,10 @@ const CustomHeader = ({title}) => {
           size={responsive(40)}
         />
       </TouchableOpacity>
-      <View style={{width: '70%'}}>
+      <View style={{width:'80%'}}>
         <Text style={styles.title}>{title}</Text>
       </View>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={styles.iconHolder}
         onPress={() => navigation.navigate('Notification')}>
         <MaterialIcons
@@ -29,7 +29,7 @@ const CustomHeader = ({title}) => {
           color={AppColor.black}
           size={responsive(40)}
         />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 };
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     backgroundColor: AppColor.white,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
   },
   title: {
     color: AppColor.black,

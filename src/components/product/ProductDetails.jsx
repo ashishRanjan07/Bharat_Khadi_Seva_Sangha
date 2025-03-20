@@ -1,4 +1,5 @@
 import {
+  Alert,
   Image,
   SafeAreaView,
   ScrollView,
@@ -26,7 +27,8 @@ const ProductDetails = ({route}) => {
   const [showFullDescription, setShowFullDescription] = useState(false);
 
   const handleAddToCart = () => {
-    showToast('success', 'Added to Cart', 'Product added to Cart Successfully');
+    // showToast('success', 'Added to Cart', 'Product added to Cart Successfully');
+    Alert.alert("Product is out of Stock","Product is currently out of stock")
   };
 
   const toggleDescriptionVisibility = () => {
@@ -106,8 +108,9 @@ const ProductDetails = ({route}) => {
               {`\u20B9`}
               {salePrice}
             </Text>
-            <Text style={[styles.regularPrice, {textDecorationLine: 'none'}]}>
-              Stock({item?.stock})
+            <Text style={[styles.regularPrice, {textDecorationLine: 'none',color:'red'}]}>
+              {/* Stock({item?.stock}) */}
+              Out of Stock
             </Text>
           </View>
           {/* Size Holder */}
@@ -148,21 +151,19 @@ const ProductDetails = ({route}) => {
       </ScrollView>
       <View style={styles.buttonHolder}>
         <View style={{width: '45%'}}>
-          <CustomButton
+          {/* <CustomButton
             title={'Add to Cart'}
             color={'#FFBF00'}
             textColor={AppColor.black}
             handleAction={handleAddToCart}
-          />
+          /> */}
         </View>
         <View style={{width: '45%'}}>
           <CustomButton
-            title={'Buy Now'}
+            title={'Out of Stock'}
             color={AppColor.success}
             textColor={AppColor.white}
-            handleAction={() =>
-              console.log('Product Added to Cart Successfully')
-            }
+            handleAction={handleAddToCart}
           />
         </View>
       </View>

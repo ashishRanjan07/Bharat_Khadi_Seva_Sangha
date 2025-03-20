@@ -87,44 +87,44 @@ const Setting = () => {
             Icon={MaterialCommunityIcons}
             handleAction={handelEditProfile}
           />
-          <CustomList
+          {/* <CustomList
             text={'Saved Payment & Gift Card'}
             iconName={'wallet-giftcard'}
             Icon={MaterialIcons}
             handleAction={() => navigation.navigate('Saved Card and Gift Card')}
-          />
+          /> */}
           <CustomList
             text={'Save Address'}
             iconName={'address'}
             Icon={Entypo}
             handleAction={() => navigation.navigate('Address')}
           />
-          <CustomList
+          {/* <CustomList
             text={'Select language'}
             iconName={'language'}
             Icon={MaterialIcons}
             handleAction={() => setShowChangeLanguageModal(!showLanguageModal)}
-          />
-          <CustomList
+          /> */}
+          {/* <CustomList
             text={'Notification Settings'}
             iconName={'notifications'}
             Icon={MaterialIcons}
             handleAction={() =>
               setShowNotificationModal(!notificationModalShow)
             }
-          />
-          <CustomList
+          /> */}
+          {/* <CustomList
             text={'Terms, Polices and License'}
             iconName={'policy'}
             Icon={MaterialIcons}
             handleAction={handleTermAndCondition}
-          />
-          <CustomList
+          /> */}
+          {/* <CustomList
             text={'Browse FAQs'}
             iconName={'question-answer'}
             Icon={MaterialIcons}
             handleAction={handleFAQs}
-          />
+          /> */}
           <CustomList
             text={'Logout'}
             iconName={'logout'}

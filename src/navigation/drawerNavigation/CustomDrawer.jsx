@@ -39,16 +39,16 @@ const CustomDrawer = props => {
       </View>
       <DrawerItemList {...props} />
       <View style={styles.socialMediaHolder}>
-        <MaterialCommunityIcons
+        {/* <MaterialCommunityIcons
           name="whatsapp"
           size={responsive(40)}
           color={AppColor.C4}
-        />
-        <MaterialCommunityIcons
+        /> */}
+        {/* <MaterialCommunityIcons
           name="linkedin"
           size={responsive(40)}
           color={AppColor.C4}
-        />
+        /> */}
         <TouchableOpacity onPress={handleFacebook}>
           <MaterialCommunityIcons
             name="facebook"
